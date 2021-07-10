@@ -72,20 +72,23 @@ const numberOfDot: number = 10;
 
 const firstRect = new Rect(Dot.randomDot(400, 400),Dot.randomDot(400, 400));
 const secondRect = new Rect(Dot.randomDot(400, 400),Dot.randomDot(400, 400));
-console.log(firstRect);
-console.log(secondRect);
+console.log(`Rectangle 1: `, firstRect);
+console.log(`Rectangle 2: `, secondRect);
 const crossRectangle = firstRect.crossRect(secondRect);
-console.log(crossRectangle);
+console.log(`Cross rectangle: `, crossRectangle);
 
 if (crossRectangle) {
     const newEllipse = new EllipseInRect(crossRectangle);
+    console.log(`Ellipse: `,crossRectangle);
+
     const dotArr: {x:number, y: number}[] = [];
 
     let i: number = 0;
     while (i < numberOfDot) {
         const dotCoordinate = newEllipse.getRandomDotInEllipse();
-        dotArr.push(dotCoordinate);
+        const newDot = new Dot(dotCoordinate.x, dotCoordinate.y)
+        dotArr.push(newDot);
         i++;
     };
-    console.log(dotArr);
+    console.log(`Dots: `, dotArr);
 };
